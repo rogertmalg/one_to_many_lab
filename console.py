@@ -11,6 +11,7 @@ os.system('psql -d library -f db/library.sql')
 
 author_1 = Author("Dan Brown")
 author_repository.save(author_1)
+
 author_2 = Author("J R R Tolkien")
 author_repository.save(author_2)
 
@@ -22,11 +23,6 @@ book_repository.save(book_02)
 
 book_03 = Book("Lord of the Rings", author_2, 500)
 book_repository.save(book_03)
-
-books = book_repository.select_all()
-for book in books:
-    print(book.__dict__)
-
 
 
 pdb.set_trace()
