@@ -9,18 +9,24 @@ import repositories.author_repository as author_repository
 
 os.system('psql -d library -f db/library.sql')
 
-author_1 = Author("Dani Brown")
+author_1 = Author("Dan Brown")
 author_repository.save(author_1)
 author_2 = Author("J R R Tolkien")
 author_repository.save(author_2)
 
-author_repository.select_all()
+book_01 = Book("DaVinci Code", author_1, 300)
+book_repository.save(book_01)
 
-author_1.name = "Dan Brown"
-author_repository.update(author_1)
+book_02 = Book("Inferno", author_1, 450)
+book_repository.save(book_02)
 
-author = author_repository.select(1)
-print(author.__dict__)
+book_03 = Book("Lord of the Rings", author_2, 500)
+book_repository.save(book_03)
+
+books = book_repository.select_all()
+for book in books:
+    print(book.__dict__)
+
 
 
 pdb.set_trace()
